@@ -1,5 +1,5 @@
 import React from 'react'
-import {css} from '@emotion/react'
+import {css,useTheme} from '@emotion/react'
 
 const style = css`
   width: 300px;
@@ -7,7 +7,9 @@ const style = css`
   border: 3px solid red;
 `
 function Css(props){
-  return <div css={style} {...props}>
+  const theme1 = useTheme();
+  console.log(theme1);
+  return <div css={css`color:${theme1.colors.primary}`} >
     demo
   </div>
 }

@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import {css} from '@emotion/react'
+import {css,ThemeProvider,useTheme} from '@emotion/react'
 import styled from '@emotion/styled'
 import Css from './css'
+// import { ThemeProvider } from 'emotion-theming'
 
 // const style = css`
 //   width: 100px;
@@ -30,12 +31,27 @@ const Container = styled.div`
 
 `
 
+const theme = {
+  colors:{
+    primary:'tomato'
+  }
+}
 
+const primaryColor = props => css`
+  color:${props.colors.primary}
+`
 
 function App() {
+
+
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <header className="App-header">
+
+        <div css={primaryColor}>
+          App
+        </div>
+
         <Container>
           <Button bgColor='green'>button</Button>
         </Container>
@@ -50,7 +66,7 @@ function App() {
           Learn React
        
       </header>
-    </div>
+    </ThemeProvider>
   );
 }
 
